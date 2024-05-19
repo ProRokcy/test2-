@@ -1,0 +1,64 @@
+﻿<Page x:Class="WpfApp1.Page.MainAbminPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1.Page"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainAbminPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="165*"/>
+            <RowDefinition Height="172*"/>
+            <RowDefinition Height="53*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <DataGrid Name="MyDataGrid" AutoGenerateColumns="False" Margin="10"
+                      Height="300" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center" Grid.ColumnSpan="2">
+                                        <TextBlock Text="{Binding FIO}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
+                                        <TextBlock Text="{Binding Role.Title}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+                                        <Button x:Name="editBtn" Content="редактировать" Click="editBtn_Click"/>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="4">
+            <Button x:Name="AddBtn" Content="Добавить" Click="AddBtn_Click"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <TextBox x:Name="SerchTxb" TextChanged="SerchTxb_TextChanged" Width="352"/>
+            <ComboBox Name="CmbRole" SelectionChanged="CmbRole_SelectionChanged" Width="243">
+                <ComboBoxItem>Все</ComboBoxItem>
+                <ComboBoxItem>Сотрудники</ComboBoxItem>
+                <ComboBoxItem>ТимЛиды</ComboBoxItem>
+                <ComboBoxItem>Админы</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+    </Grid>
+</Page>
